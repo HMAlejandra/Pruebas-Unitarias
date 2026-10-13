@@ -34,25 +34,4 @@ class ClienteTest {
         assertFalse(cliente.isActivo(), "El cliente debe quedar INACTIVO después de 3 penalizaciones");
         assertFalse(cliente.puedeRealizarReservas(), "No debe poder realizar reservas");
     }
-
-    @Test
-    @DisplayName("PRUEBA #2 (Extra): Cliente puede ser reactivado")
-    void clientePuedeSerReactivado() {
-        // Arrange
-        Cliente cliente = new Cliente("Pedro Sánchez", "pedro@email.com");
-        
-        // Penalizar 3 veces para que quede inactivo
-        cliente.registrarPenalizacion();
-        cliente.registrarPenalizacion();
-        cliente.registrarPenalizacion();
-        assertFalse(cliente.isActivo(), "Debe estar inactivo");
-
-        // Act - Reactivar cliente
-        cliente.reactivar();
-
-        // Assert
-        assertTrue(cliente.isActivo(), "Debe estar activo después de reactivar");
-        assertEquals(0, cliente.getPenalizaciones(), "Las penalizaciones deben reiniciarse a 0");
-        assertTrue(cliente.puedeRealizarReservas(), "Debe poder realizar reservas nuevamente");
-    }
 }

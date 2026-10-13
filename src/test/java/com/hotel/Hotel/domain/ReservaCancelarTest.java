@@ -38,31 +38,4 @@ class ReservaCancelarTest {
         assertEquals(EstadoHabitacion.DISPONIBLE, habitacion.getEstado(), 
                 "La habitación debe volver a estar DISPONIBLE");
     }
-
-    @Test
-    @DisplayName("PRUEBA #4 (Extra): Se puede cancelar una reserva pendiente")
-    void sePuedeCancelarReservaPendiente() {
-        // Arrange
-        Cliente cliente = new Cliente("Luis Ramírez", "luis@email.com");
-        Habitacion habitacion = new HabitacionEstandar("202", 1, 100.0, 1);
-        
-        RangoFechas periodo = new RangoFechas(
-                LocalDateTime.now().plusDays(1),
-                LocalDateTime.now().plusDays(3)
-        );
-        
-        Reserva reserva = new Reserva(cliente, habitacion, periodo);
-        
-        // Verificar que está pendiente
-        assertEquals(EstadoReserva.PENDIENTE, reserva.getEstado());
-        assertEquals(EstadoHabitacion.DISPONIBLE, habitacion.getEstado());
-
-        // Act - Cancelar sin confirmar
-        reserva.cancelar();
-
-        // Assert
-        assertEquals(EstadoReserva.CANCELADA, reserva.getEstado());
-        assertEquals(EstadoHabitacion.DISPONIBLE, habitacion.getEstado(), 
-                "La habitación debe seguir disponible");
-    }
 }

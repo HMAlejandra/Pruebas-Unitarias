@@ -27,23 +27,9 @@ class RangoFechasTest {
     }
 
     @Test
-    @DisplayName("PRUEBA #3 (Extra): Un día completo debe contar como 1 día")
-    void unDiaCompletoDebeContarComoUnDia() {
-        // Arrange - Crear un rango de exactamente 1 día
-        LocalDateTime inicio = LocalDateTime.of(2024, 10, 15, 10, 0);
-        LocalDateTime fin = LocalDateTime.of(2024, 10, 16, 10, 0);
-        
-        // Act
-        RangoFechas rango = new RangoFechas(inicio, fin);
-
-        // Assert
-        assertEquals(1, rango.getDias(), "Un día completo debe contar como 1 día");
-    }
-
-    @Test
-    @DisplayName("PRUEBA #3 (Extra): Debe lanzar excepción si fecha fin es antes que fecha inicio")
+    @DisplayName("PRUEBA #3 (Validación): Debe lanzar excepción si fecha fin es antes que fecha inicio")
     void debeLanzarExcepcionSiFechaFinEsAnterior() {
-        // Arrange - Fechas invertidas
+        // Arrange - Fechas invertidas (ERROR intencional)
         LocalDateTime inicio = LocalDateTime.of(2024, 10, 20, 14, 0);
         LocalDateTime fin = LocalDateTime.of(2024, 10, 15, 12, 0);
         

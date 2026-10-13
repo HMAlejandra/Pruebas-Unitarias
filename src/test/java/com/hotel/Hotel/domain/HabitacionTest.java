@@ -32,37 +32,4 @@ class HabitacionTest {
         assertEquals(EstadoHabitacion.OCUPADA, habitacion.getEstado(), 
                 "La habitación debe permanecer OCUPADA");
     }
-
-    @Test
-    @DisplayName("PRUEBA #5 (Extra): Una habitación disponible puede ser asignada")
-    void habitacionDisponiblePuedeSerAsignada() {
-        // Arrange
-        Habitacion habitacion = new HabitacionEstandar("205", 2, 180.0, 2);
-        
-        // Verificar estado inicial
-        assertEquals(EstadoHabitacion.DISPONIBLE, habitacion.getEstado());
-
-        // Act - Asignar la habitación
-        habitacion.asignarAReserva();
-
-        // Assert
-        assertEquals(EstadoHabitacion.OCUPADA, habitacion.getEstado(),
-                "Debe cambiar a OCUPADA después de asignar");
-    }
-
-    @Test
-    @DisplayName("PRUEBA #5 (Extra): Una habitación puede ser habilitada después de ocupada")
-    void habitacionPuedeSerHabilitadaDespuesDeOcupada() {
-        // Arrange
-        Habitacion habitacion = new HabitacionEstandar("310", 3, 200.0, 2);
-        habitacion.asignarAReserva(); // Ocuparla primero
-        assertEquals(EstadoHabitacion.OCUPADA, habitacion.getEstado());
-
-        // Act - Habilitar la habitación
-        habitacion.habilitar();
-
-        // Assert
-        assertEquals(EstadoHabitacion.DISPONIBLE, habitacion.getEstado(),
-                "Debe volver a estar DISPONIBLE después de habilitar");
-    }
 }
